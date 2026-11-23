@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-line;
+  }
+  body {
+    @apply bg-ink text-mist antialiased;
+  }
+  /* Visible keyboard focus everywhere — chunky, on-brand, never invisible. */
+  :focus-visible {
+    outline: 3px solid theme('colors.zap');
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-chunky bg-zap px-6 py-3 font-display font-semibold text-ink transition hover:brightness-110 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-chunky border border-line bg-surface px-6 py-3 font-display font-semibold text-mist transition hover:bg-surface2 active:scale-[0.98];
+  }
+  .card {
+    @apply rounded-chunky border border-line bg-surface p-6;
+  }
+  .input-field {
+    @apply w-full rounded-xl border border-line bg-ink px-4 py-3 text-mist placeholder:text-muted focus:border-zap focus:outline-none;
+  }
+}
